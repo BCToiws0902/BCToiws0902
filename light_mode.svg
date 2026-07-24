@@ -1,5 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="1300px" height="530px" font-size="16px">
+<defs>
+    <filter id="wave" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.001" numOctaves="2" result="ripple">
+            <animate attributeName="baseFrequency" values="0.015 0.001; 0.025 0.001; 0.015 0.001" dur="4s" repeatCount="indefinite" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="ripple" scale="10" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+</defs>
 <style>
 @font-face {
   src: local('Consolas'), local('Consolas Bold');
@@ -13,35 +21,44 @@
 .cc {fill: #57606a;}
 .add {fill: #116329;}
 .del {fill: #cf222e;}
-.ascii {fill: #24292f;}
 .header {fill: #24292f; font-weight: bold;}
 text, tspan {white-space: pre;}
 </style>
 <rect width="1300px" height="530px" fill="#f6f8fa" rx="15"/>
-<text x="15" y="35" fill="#24292f">
-<tspan x="15" y="35" class="ascii">@@@@@@@@@%%@@@@%#**++++*#%%@@@@%%@@@@@@@@@</tspan><tspan x="480" y="35" class="header">BCToiws0902</tspan><tspan class="cc">@</tspan><tspan class="value">Military</tspan><tspan class="cc"> -------------------</tspan>
-<tspan x="15" y="56" class="ascii">@@@@@@@%@@@%%#-.         .::=*%@@%%@@@@@@@</tspan><tspan x="480" y="56" class="key">OS</tspan><tspan class="cc">: ..................... </tspan><tspan class="value">windows 11 iot, android 12, Ubuntu server 2019, ios 26</tspan>
-<tspan x="15" y="77" class="ascii">@@@@@%@@@%#**+            .   :=*@@%%@@@@@</tspan><tspan x="480" y="77" class="key">Uptime</tspan><tspan class="cc">: ................. </tspan><tspan class="value">25 years, 5 months, 15 days</tspan>
-<tspan x="15" y="98" class="ascii">@@@@%@@#*****=.     ..::..   .:. :*@@%@@@@</tspan><tspan x="480" y="98" class="key">Host</tspan><tspan class="cc">: ................... </tspan><tspan class="value">Home, Military</tspan>
-<tspan x="15" y="119" class="ascii">@@@%@#:-***+*=..  .=**##*+.  ::.   :#@%@@@</tspan><tspan x="480" y="119" class="key">Kernel</tspan><tspan class="cc">: ................. </tspan><tspan class="value">Admin System</tspan>
-<tspan x="15" y="140" class="ascii">@@%@+  =**++*+:   :----===-  ::.    :#@%@@</tspan><tspan x="480" y="140" class="key">IDE</tspan><tspan class="cc">: .................... </tspan><tspan class="value">Vscode, arduino ide, IntelliJ IDEA</tspan>
-<tspan x="15" y="161" class="ascii">@%@+   -*++**+.   -=--+=+**.        :+#@%@</tspan><tspan x="480" y="161" class="cc"></tspan>
-<tspan x="15" y="182" class="ascii">%@*    :***+*=.   -=-=+++*-         :+=%@%</tspan><tspan x="480" y="182" class="key">Languages.Programming</tspan><tspan class="cc">: .. </tspan><tspan class="value">Holy Snake, java not java, C with pain, .md developer</tspan>
-<tspan x="15" y="203" class="ascii">%@.    -**+**+.    :=+***=          :+=+%%</tspan><tspan x="480" y="203" class="key">Languages.Computer</tspan><tspan class="cc">: ..... </tspan><tspan class="value">py, json, bat, js, html, css</tspan>
-<tspan x="15" y="224" class="ascii">@#--:  -*****+.     :===++..        .=+=#@</tspan><tspan x="480" y="224" class="key">Languages.Real</tspan><tspan class="cc">: ......... </tspan><tspan class="value">Vietnamese, Eye language</tspan>
-<tspan x="15" y="245" class="ascii">@=.=-: :+**++=.   .  :-=+:..  .:=:   .-=*@</tspan><tspan x="480" y="245" class="cc"></tspan>
-<tspan x="15" y="266" class="ascii">%-:-:  :+*=          -=+: .     .: :--==+@</tspan><tspan x="480" y="266" class="key">Hobbies.Software</tspan><tspan class="cc">: ....... </tspan><tspan class="value">Scripting, ios jailbreak, mod GUI ubuntu, desktop supermini size</tspan>
-<tspan x="15" y="287" class="ascii">%---:  :+*=:::       :=.          .=++*=+@</tspan><tspan x="480" y="287" class="key">Hobbies.Hardware</tspan><tspan class="cc">: ....... </tspan><tspan class="value">DIY Speakers, Custom Mechanical Keyboards</tspan>
-<tspan x="15" y="308" class="ascii">@=:=:  -*+=-=.                     .+*+=+@</tspan><tspan x="480" y="308" class="cc"></tspan>
-<tspan x="15" y="329" class="ascii">@#-==-=+**+++                       -+=-#@</tspan><tspan x="480" y="329" class="cc">- Contact</tspan>
-<tspan x="15" y="350" class="ascii">%%=:--=+****=                       .. :%%</tspan><tspan x="480" y="350" class="key">Email.Personal</tspan><tspan class="cc">: ......... </tspan><tspan class="value">buicongtoi01@gmail.com</tspan>
-<tspan x="15" y="371" class="ascii">%@#..:==++++-                          #@%</tspan><tspan x="480" y="371" class="key">Facebook</tspan><tspan class="cc">: ............... </tspan><tspan class="value">bct0902</tspan>
-<tspan x="15" y="392" class="ascii">@%@* .- ...                           *@%@</tspan><tspan x="480" y="392" class="key">Telegram</tspan><tspan class="cc">: ............... </tspan><tspan class="value">bct0902</tspan>
-<tspan x="15" y="413" class="ascii">@@%@*                               .#@%@@</tspan><tspan x="480" y="413" class="cc"></tspan>
-<tspan x="15" y="434" class="ascii">@@@%@#:    .                       -%@%@@@</tspan><tspan x="480" y="434" class="cc">- GitHub Stats</tspan>
-<tspan x="15" y="455" class="ascii">@@@@%@@*:                        :*@@%@@@@</tspan><tspan x="480" y="455" class="key">Repos</tspan><tspan class="cc">: .... </tspan><tspan class="value">18</tspan><tspan class="cc"> {Contributed: 4}</tspan><tspan class="key"> | Stars</tspan><tspan class="cc">: .......... </tspan><tspan class="value">12</tspan>
-<tspan x="15" y="476" class="ascii">@@@@@%%@@*-.                  .=#@@%%@@@@@</tspan><tspan x="480" y="476" class="key">Commits</tspan><tspan class="cc">: ...................... </tspan><tspan class="value">312</tspan><tspan class="key"> | Followers</tspan><tspan class="cc">: ....... </tspan><tspan class="value">5</tspan>
-<tspan x="15" y="497" class="ascii">@@@@@@@%%@@%#=-.          .-+#%@@%%@@@@@@@</tspan><tspan x="480" y="497" class="key">Lines of Code on GitHub</tspan><tspan class="cc">:. </tspan><tspan class="value">42,750</tspan><tspan class="cc"> ( </tspan><tspan class="add">52,100++</tspan><tspan class="cc">,  </tspan><tspan class="del">9,350--</tspan><tspan class="cc"> )</tspan>
-<tspan x="15" y="518" class="ascii">@@@@@@@@@%%@@@@@%#*****##%@@@@@%%@@@@@@@@@</tspan><tspan x="480" y="518" class="cc"></tspan>
+
+<!-- Vietnam Flag with waving effect -->
+<g transform="translate(40, 132)" filter="url(#wave)">
+    <rect width="400" height="266" fill="#da251d" rx="10" />
+    <g transform="translate(200, 133)">
+        <polygon points="0,-80 18,-25 76,-25 29,9 47,65 0,31 -47,65 -29,9 -76,-25 -18,-25" fill="#ffff00" />
+    </g>
+</g>
+
+<!-- Stats column -->
+<text fill="#24292f">
+<tspan x="480" y="35" class="header">BCToiws0902</tspan><tspan class="cc">@</tspan><tspan class="value">Military</tspan><tspan class="cc"> -------------------</tspan>
+<tspan x="480" y="56" class="key">OS</tspan><tspan class="cc">: ..................... </tspan><tspan class="value">windows 11 iot, android 12, Ubuntu server 2019, ios 26</tspan>
+<tspan x="480" y="77" class="key">Uptime</tspan><tspan class="cc">: ................. </tspan><tspan class="value">25 years, 5 months, 15 days</tspan>
+<tspan x="480" y="98" class="key">Host</tspan><tspan class="cc">: ................... </tspan><tspan class="value">Home, Military</tspan>
+<tspan x="480" y="119" class="key">Kernel</tspan><tspan class="cc">: ................. </tspan><tspan class="value">Admin System</tspan>
+<tspan x="480" y="140" class="key">IDE</tspan><tspan class="cc">: .................... </tspan><tspan class="value">Vscode, arduino ide, IntelliJ IDEA</tspan>
+<tspan x="480" y="161" class="cc"></tspan>
+<tspan x="480" y="182" class="key">Languages.Programming</tspan><tspan class="cc">: .. </tspan><tspan class="value">Holy Snake, java not java, C with pain, .md developer</tspan>
+<tspan x="480" y="203" class="key">Languages.Computer</tspan><tspan class="cc">: ..... </tspan><tspan class="value">py, json, bat, js, html, css</tspan>
+<tspan x="480" y="224" class="key">Languages.Real</tspan><tspan class="cc">: ......... </tspan><tspan class="value">Vietnamese, Eye language</tspan>
+<tspan x="480" y="245" class="cc"></tspan>
+<tspan x="480" y="266" class="key">Hobbies.Software</tspan><tspan class="cc">: ....... </tspan><tspan class="value">Scripting, ios jailbreak, mod GUI ubuntu, desktop supermini size</tspan>
+<tspan x="480" y="287" class="key">Hobbies.Hardware</tspan><tspan class="cc">: ....... </tspan><tspan class="value">DIY Speakers, Custom Mechanical Keyboards</tspan>
+<tspan x="480" y="308" class="cc"></tspan>
+<tspan x="480" y="329" class="cc">- Contact</tspan>
+<tspan x="480" y="350" class="key">Email.Personal</tspan><tspan class="cc">: ......... </tspan><tspan class="value">buicongtoi01@gmail.com</tspan>
+<tspan x="480" y="371" class="key">Facebook</tspan><tspan class="cc">: ............... </tspan><tspan class="value">bct0902</tspan>
+<tspan x="480" y="392" class="key">Telegram</tspan><tspan class="cc">: ............... </tspan><tspan class="value">bct0902</tspan>
+<tspan x="480" y="413" class="cc"></tspan>
+<tspan x="480" y="434" class="cc">- GitHub Stats</tspan>
+<tspan x="480" y="455" class="key">Repos</tspan><tspan class="cc">: .... </tspan><tspan class="value">18</tspan><tspan class="cc"> {Contributed: 4}</tspan><tspan class="key"> | Stars</tspan><tspan class="cc">: .......... </tspan><tspan class="value">12</tspan>
+<tspan x="480" y="476" class="key">Commits</tspan><tspan class="cc">: ...................... </tspan><tspan class="value">312</tspan><tspan class="key"> | Followers</tspan><tspan class="cc">: ....... </tspan><tspan class="value">5</tspan>
+<tspan x="480" y="497" class="key">Lines of Code on GitHub</tspan><tspan class="cc">:. </tspan><tspan class="value">42,750</tspan><tspan class="cc"> ( </tspan><tspan class="add">52,100++</tspan><tspan class="cc">,  </tspan><tspan class="del">9,350--</tspan><tspan class="cc"> )</tspan>
+<tspan x="480" y="518" class="cc"></tspan>
 </text>
 </svg>

@@ -49,6 +49,14 @@ THEMES = {
 
 SVG_TEMPLATE = """<?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="1300px" height="530px" font-size="16px">
+<defs>
+    <filter id="wave" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.001" numOctaves="2" result="ripple">
+            <animate attributeName="baseFrequency" values="0.015 0.001; 0.025 0.001; 0.015 0.001" dur="4s" repeatCount="indefinite" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="ripple" scale="10" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+</defs>
 <style>
 @font-face {{
   src: local('Consolas'), local('Consolas Bold');
@@ -62,12 +70,21 @@ SVG_TEMPLATE = """<?xml version='1.0' encoding='UTF-8'?>
 .cc {{fill: {comment_color};}}
 .add {{fill: {add_color};}}
 .del {{fill: {del_color};}}
-.ascii {{fill: {ascii_color};}}
 .header {{fill: {header_color}; font-weight: bold;}}
 text, tspan {{white-space: pre;}}
 </style>
 <rect width="1300px" height="530px" fill="{bg_color}" rx="15"/>
-<text x="15" y="35" fill="{text_color}">
+
+<!-- Vietnam Flag with waving effect -->
+<g transform="translate(40, 132)" filter="url(#wave)">
+    <rect width="400" height="266" fill="#da251d" rx="10" />
+    <g transform="translate(200, 133)">
+        <polygon points="0,-80 18,-25 76,-25 29,9 47,65 0,31 -47,65 -29,9 -76,-25 -18,-25" fill="#ffff00" />
+    </g>
+</g>
+
+<!-- Stats column -->
+<text fill="{text_color}">
 {content}
 </text>
 </svg>
@@ -84,48 +101,6 @@ def calculate_uptime(birthday):
         diff.days, 'day' + format_plural(diff.days),
         ' 🎂' if (diff.months == 0 and diff.days == 0) else '')
 
-def generate_ascii_art(image_path, width=43, invert=False):
-    if not os.path.exists(image_path):
-        print(f"Warning: {image_path} not found. Using empty spaces for ASCII.")
-        return [" " * width] * 24
-        
-    try:
-        from PIL import Image, ImageEnhance
-        img = Image.open(image_path)
-        
-        # Xử lý nền trong suốt (nếu có)
-        if img.mode in ('RGBA', 'LA') or (img.mode == 'P' and 'transparency' in img.info):
-            img = img.convert('RGBA')
-            bg = Image.new('RGBA', img.size, (255, 255, 255))
-            bg.paste(img, mask=img.split()[3])
-            img = bg
-            
-        img = img.convert("L")
-        # Tăng độ tương phản để rõ đường nét khuôn mặt
-        img = ImageEnhance.Contrast(img).enhance(1.5)
-        
-        # Bắt buộc chiều cao 24 dòng để khớp với cột thống kê bên phải
-        height = 24
-        img = img.resize((width, height), Image.Resampling.LANCZOS)
-        
-        ascii_chars = '@%#*+=-:. '
-        if invert:
-            ascii_chars = ascii_chars[::-1]
-            
-        num_chars = len(ascii_chars)
-        lines = []
-        for y in range(img.height):
-            line = ""
-            for x in range(img.width):
-                gray = img.getpixel((x, y))
-                char_idx = int(gray * (num_chars - 1) / 255)
-                line += ascii_chars[char_idx]
-            lines.append(line)
-        return lines
-    except Exception as e:
-        print(f"Error rendering ASCII from image: {e}")
-        return [" " * width] * 24
-
 def get_dots(key_label, total_len=25):
     colon_and_space = ": "
     dot_count = total_len - len(key_label) - len(colon_and_space)
@@ -133,19 +108,20 @@ def get_dots(key_label, total_len=25):
         dot_count = 0
     return colon_and_space + ("." * dot_count) + " "
 
-def escape_xml(text):
-    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;").replace("'", "&apos;")
+def escape_xml(s):
+    s = s.replace("&", "&amp;")
+    s = s.replace("<", "&lt;")
+    s = s.replace(">", "&gt;")
+    s = s.replace('"', "&quot;")
+    return s
 
-def format_svg_line(y, ascii_part, stats_parts=None):
-    # Escape characters for XML safety
-    escaped_ascii = escape_xml(ascii_part)
-    res = f'<tspan x="15" y="{y}" class="ascii">{escaped_ascii}</tspan>'
-    
+def format_svg_line(y_pos, stats_parts):
+    res = ""
+    # Add Stats part
     if stats_parts:
-        # First part starts at x=480, y=y
-        text, cls = stats_parts[0]
-        escaped_text = escape_xml(text)
-        res += f'<tspan x="480" y="{y}" class="{cls}">{escaped_text}</tspan>'
+        first_text, first_cls = stats_parts[0]
+        escaped_first = escape_xml(first_text)
+        res += f'<tspan x="480" y="{y_pos}" class="{first_cls}">{escaped_first}</tspan>'
         
         # Remaining parts flow horizontally
         for text, cls in stats_parts[1:]:
@@ -306,7 +282,7 @@ def fetch_github_stats():
           "deletions": 9350
       }
 
-def build_svg(theme_name, stats, ascii_lines):
+def build_svg(theme_name, stats):
     theme = THEMES[theme_name]
     uptime_str = calculate_uptime(BIRTHDAY)
     
@@ -368,11 +344,11 @@ def build_svg(theme_name, stats, ascii_lines):
     lines_content = []
     for i in range(24):
         y_pos = 35 + i * 21
-        ascii_line = ascii_lines[i]
         stats_parts = stats_structure[i] if i < len(stats_structure) else None
         
-        line_svg = format_svg_line(y_pos, ascii_line, stats_parts)
-        lines_content.append(line_svg)
+        line_svg = format_svg_line(y_pos, stats_parts)
+        if line_svg:
+            lines_content.append(line_svg)
         
     content = "\n".join(lines_content)
     
@@ -384,7 +360,6 @@ def build_svg(theme_name, stats, ascii_lines):
         comment_color=theme["comment_color"],
         add_color=theme["add_color"],
         del_color=theme["del_color"],
-        ascii_color=theme["ascii_color"],
         header_color=theme["header_color"],
         content=content
     )
@@ -395,20 +370,16 @@ def main():
     print("GitHub statistics retrieved successfully:")
     print(stats)
     
-    image_file = "logobct.png"
-    
     # Build Dark Mode SVG
     print("\nGenerating dark_mode.svg...")
-    dark_ascii = generate_ascii_art(image_file, width=42, invert=False)
-    dark_svg = build_svg("dark", stats, dark_ascii)
+    dark_svg = build_svg("dark", stats)
     with open("dark_mode.svg", "w", encoding="utf-8") as f:
         f.write(dark_svg)
     print("dark_mode.svg saved successfully!")
     
     # Build Light Mode SVG
     print("Generating light_mode.svg...")
-    light_ascii = generate_ascii_art(image_file, width=42, invert=True)
-    light_svg = build_svg("light", stats, light_ascii)
+    light_svg = build_svg("light", stats)
     with open("light_mode.svg", "w", encoding="utf-8") as f:
         f.write(light_svg)
     print("light_mode.svg saved successfully!")
