@@ -48,7 +48,7 @@ THEMES = {
 }
 
 SVG_TEMPLATE = """<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="985px" height="530px" font-size="16px">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="1300px" height="530px" font-size="16px">
 <style>
 @font-face {{
   src: local('Consolas'), local('Consolas Bold');
@@ -66,7 +66,7 @@ SVG_TEMPLATE = """<?xml version='1.0' encoding='UTF-8'?>
 .header {{fill: {header_color}; font-weight: bold;}}
 text, tspan {{white-space: pre;}}
 </style>
-<rect width="985px" height="530px" fill="{bg_color}" rx="15"/>
+<rect width="1300px" height="530px" fill="{bg_color}" rx="15"/>
 <text x="15" y="35" fill="{text_color}">
 {content}
 </text>
