@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="1300px" height="530px" font-size="16px">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="850px" height="530px" font-size="16px">
 <defs>
     <linearGradient id="folds" x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stop-color="black" stop-opacity="0.3" />
@@ -28,54 +28,33 @@
 .header {fill: #24292f; font-weight: bold;}
 text, tspan {white-space: pre;}
 </style>
-<rect width="1300px" height="530px" fill="#f6f8fa" rx="15"/>
-
-<!-- Vietnam Flag with crisp optical 3D waving effect -->
-<g transform="translate(40, 132)">
-    <g>
-        <!-- Sway animation -->
-        <animateTransform attributeName="transform" type="skewY" values="0; 1.5; 0; -1.5; 0" dur="3s" repeatCount="indefinite" />
-        <g clip-path="url(#flag-clip)">
-            <rect width="400" height="266" fill="#da251d" />
-            <g transform="translate(200, 133)">
-                <g>
-                    <animateTransform attributeName="transform" type="scale" values="1; 1.05; 1" dur="3s" repeatCount="indefinite" />
-                    <polygon points="0,-80 18,-25 76,-25 29,9 47,65 0,31 -47,65 -29,9 -76,-25 -18,-25" fill="#ffff00" />
-                </g>
-            </g>
-            <!-- Moving folds overlay -->
-            <rect width="1200" height="266" fill="url(#folds)" x="-800">
-                <animate attributeName="x" values="-800; -400" dur="3s" repeatCount="indefinite" />
-            </rect>
-        </g>
-    </g>
-</g>
+<rect width="850px" height="530px" fill="#f6f8fa" rx="15"/>
 
 <!-- Stats column -->
 <text fill="#24292f">
-<tspan x="480" y="35" class="header">BCToiws0902</tspan><tspan class="cc">@</tspan><tspan class="value">Military</tspan><tspan class="cc"> -------------------</tspan>
-<tspan x="480" y="56" class="key">OS</tspan><tspan class="cc">: ..................... </tspan><tspan class="value">windows 11 iot, android 12, Ubuntu server 2019, ios 26</tspan>
-<tspan x="480" y="77" class="key">Uptime</tspan><tspan class="cc">: ................. </tspan><tspan class="value">25 years, 5 months, 15 days</tspan>
-<tspan x="480" y="98" class="key">Host</tspan><tspan class="cc">: ................... </tspan><tspan class="value">Home, Military</tspan>
-<tspan x="480" y="119" class="key">Kernel</tspan><tspan class="cc">: ................. </tspan><tspan class="value">Admin System</tspan>
-<tspan x="480" y="140" class="key">IDE</tspan><tspan class="cc">: .................... </tspan><tspan class="value">Vscode, arduino ide, IntelliJ IDEA</tspan>
-<tspan x="480" y="161" class="cc"></tspan>
-<tspan x="480" y="182" class="key">Languages.Programming</tspan><tspan class="cc">: .. </tspan><tspan class="value">Holy Snake, java not java, C with pain, .md developer</tspan>
-<tspan x="480" y="203" class="key">Languages.Computer</tspan><tspan class="cc">: ..... </tspan><tspan class="value">py, json, bat, js, html, css</tspan>
-<tspan x="480" y="224" class="key">Languages.Real</tspan><tspan class="cc">: ......... </tspan><tspan class="value">Vietnamese, Eye language</tspan>
-<tspan x="480" y="245" class="cc"></tspan>
-<tspan x="480" y="266" class="key">Hobbies.Software</tspan><tspan class="cc">: ....... </tspan><tspan class="value">Scripting, ios jailbreak, mod GUI ubuntu, desktop supermini size</tspan>
-<tspan x="480" y="287" class="key">Hobbies.Hardware</tspan><tspan class="cc">: ....... </tspan><tspan class="value">DIY Speakers, Custom Mechanical Keyboards</tspan>
-<tspan x="480" y="308" class="cc"></tspan>
-<tspan x="480" y="329" class="cc">- Contact</tspan>
-<tspan x="480" y="350" class="key">Email.Personal</tspan><tspan class="cc">: ......... </tspan><tspan class="value">buicongtoi01@gmail.com</tspan>
-<tspan x="480" y="371" class="key">Facebook</tspan><tspan class="cc">: ............... </tspan><tspan class="value">bct0902</tspan>
-<tspan x="480" y="392" class="key">Telegram</tspan><tspan class="cc">: ............... </tspan><tspan class="value">bct0902</tspan>
-<tspan x="480" y="413" class="cc"></tspan>
-<tspan x="480" y="434" class="cc">- GitHub Stats</tspan>
-<tspan x="480" y="455" class="key">Repos</tspan><tspan class="cc">: .... </tspan><tspan class="value">18</tspan><tspan class="cc"> {Contributed: 4}</tspan><tspan class="key"> | Stars</tspan><tspan class="cc">: .......... </tspan><tspan class="value">12</tspan>
-<tspan x="480" y="476" class="key">Commits</tspan><tspan class="cc">: ...................... </tspan><tspan class="value">312</tspan><tspan class="key"> | Followers</tspan><tspan class="cc">: ....... </tspan><tspan class="value">5</tspan>
-<tspan x="480" y="497" class="key">Lines of Code on GitHub</tspan><tspan class="cc">:. </tspan><tspan class="value">42,750</tspan><tspan class="cc"> ( </tspan><tspan class="add">52,100++</tspan><tspan class="cc">,  </tspan><tspan class="del">9,350--</tspan><tspan class="cc"> )</tspan>
-<tspan x="480" y="518" class="cc"></tspan>
+<tspan x="40" y="35" class="header">BCToiws0902</tspan><tspan class="cc">@</tspan><tspan class="value">Military</tspan><tspan class="cc"> -------------------</tspan>
+<tspan x="40" y="56" class="key">OS</tspan><tspan class="cc">: ..................... </tspan><tspan class="value">windows 11 iot, android 12, Ubuntu server 2019, ios 26</tspan>
+<tspan x="40" y="77" class="key">Uptime</tspan><tspan class="cc">: ................. </tspan><tspan class="value">25 years, 5 months, 15 days</tspan>
+<tspan x="40" y="98" class="key">Host</tspan><tspan class="cc">: ................... </tspan><tspan class="value">Home, Military</tspan>
+<tspan x="40" y="119" class="key">Kernel</tspan><tspan class="cc">: ................. </tspan><tspan class="value">Admin System</tspan>
+<tspan x="40" y="140" class="key">IDE</tspan><tspan class="cc">: .................... </tspan><tspan class="value">Vscode, arduino ide, IntelliJ IDEA</tspan>
+<tspan x="40" y="161" class="cc"></tspan>
+<tspan x="40" y="182" class="key">Languages.Programming</tspan><tspan class="cc">: .. </tspan><tspan class="value">Holy Snake, java not java, C with pain, .md developer</tspan>
+<tspan x="40" y="203" class="key">Languages.Computer</tspan><tspan class="cc">: ..... </tspan><tspan class="value">py, json, bat, js, html, css</tspan>
+<tspan x="40" y="224" class="key">Languages.Real</tspan><tspan class="cc">: ......... </tspan><tspan class="value">Vietnamese, Eye language</tspan>
+<tspan x="40" y="245" class="cc"></tspan>
+<tspan x="40" y="266" class="key">Hobbies.Software</tspan><tspan class="cc">: ....... </tspan><tspan class="value">Scripting, ios jailbreak, mod GUI ubuntu, desktop supermini size</tspan>
+<tspan x="40" y="287" class="key">Hobbies.Hardware</tspan><tspan class="cc">: ....... </tspan><tspan class="value">DIY Speakers, Custom Mechanical Keyboards</tspan>
+<tspan x="40" y="308" class="cc"></tspan>
+<tspan x="40" y="329" class="cc">- Contact</tspan>
+<tspan x="40" y="350" class="key">Email.Personal</tspan><tspan class="cc">: ......... </tspan><tspan class="value">buicongtoi01@gmail.com</tspan>
+<tspan x="40" y="371" class="key">Facebook</tspan><tspan class="cc">: ............... </tspan><tspan class="value">bct0902</tspan>
+<tspan x="40" y="392" class="key">Telegram</tspan><tspan class="cc">: ............... </tspan><tspan class="value">bct0902</tspan>
+<tspan x="40" y="413" class="cc"></tspan>
+<tspan x="40" y="434" class="cc">- GitHub Stats</tspan>
+<tspan x="40" y="455" class="key">Repos</tspan><tspan class="cc">: .... </tspan><tspan class="value">18</tspan><tspan class="cc"> {Contributed: 4}</tspan><tspan class="key"> | Stars</tspan><tspan class="cc">: .......... </tspan><tspan class="value">12</tspan>
+<tspan x="40" y="476" class="key">Commits</tspan><tspan class="cc">: ...................... </tspan><tspan class="value">312</tspan><tspan class="key"> | Followers</tspan><tspan class="cc">: ....... </tspan><tspan class="value">5</tspan>
+<tspan x="40" y="497" class="key">Lines of Code on GitHub</tspan><tspan class="cc">:. </tspan><tspan class="value">42,750</tspan><tspan class="cc"> ( </tspan><tspan class="add">52,100++</tspan><tspan class="cc">,  </tspan><tspan class="del">9,350--</tspan><tspan class="cc"> )</tspan>
+<tspan x="40" y="518" class="cc"></tspan>
 </text>
 </svg>

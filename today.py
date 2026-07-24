@@ -48,7 +48,7 @@ THEMES = {
 }
 
 SVG_TEMPLATE = """<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="1300px" height="530px" font-size="16px">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="850px" height="530px" font-size="16px">
 <defs>
     <linearGradient id="folds" x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stop-color="black" stop-opacity="0.3" />
@@ -77,28 +77,7 @@ SVG_TEMPLATE = """<?xml version='1.0' encoding='UTF-8'?>
 .header {{fill: {header_color}; font-weight: bold;}}
 text, tspan {{white-space: pre;}}
 </style>
-<rect width="1300px" height="530px" fill="{bg_color}" rx="15"/>
-
-<!-- Vietnam Flag with crisp optical 3D waving effect -->
-<g transform="translate(40, 132)">
-    <g>
-        <!-- Sway animation -->
-        <animateTransform attributeName="transform" type="skewY" values="0; 1.5; 0; -1.5; 0" dur="3s" repeatCount="indefinite" />
-        <g clip-path="url(#flag-clip)">
-            <rect width="400" height="266" fill="#da251d" />
-            <g transform="translate(200, 133)">
-                <g>
-                    <animateTransform attributeName="transform" type="scale" values="1; 1.05; 1" dur="3s" repeatCount="indefinite" />
-                    <polygon points="0,-80 18,-25 76,-25 29,9 47,65 0,31 -47,65 -29,9 -76,-25 -18,-25" fill="#ffff00" />
-                </g>
-            </g>
-            <!-- Moving folds overlay -->
-            <rect width="1200" height="266" fill="url(#folds)" x="-800">
-                <animate attributeName="x" values="-800; -400" dur="3s" repeatCount="indefinite" />
-            </rect>
-        </g>
-    </g>
-</g>
+<rect width="850px" height="530px" fill="{bg_color}" rx="15"/>
 
 <!-- Stats column -->
 <text fill="{text_color}">
@@ -138,7 +117,7 @@ def format_svg_line(y_pos, stats_parts):
     if stats_parts:
         first_text, first_cls = stats_parts[0]
         escaped_first = escape_xml(first_text)
-        res += f'<tspan x="480" y="{y_pos}" class="{first_cls}">{escaped_first}</tspan>'
+        res += f'<tspan x="40" y="{y_pos}" class="{first_cls}">{escaped_first}</tspan>'
         
         # Remaining parts flow horizontally
         for text, cls in stats_parts[1:]:
