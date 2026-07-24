@@ -2,7 +2,7 @@
   <table>
     <tr>
       <td align="center" valign="middle" style="padding: 20px;">
-        <img src="https://media.giphy.com/media/nTniSsYn5zXppmxgY4/giphy.gif" alt="Vietnam Flag" width="400">
+        <img src="vietnam_flag.gif" alt="Vietnam Flag" width="400">
       </td>
       <td align="center" valign="middle">
         <a href="https://github.com/BCToiws0902">
