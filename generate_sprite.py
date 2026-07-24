@@ -8,14 +8,14 @@ gif = Image.open('vietnam_flag.gif')
 frames = []
 try:
     while True:
-        # Convert to RGBA to preserve any transparency and colors, resize to 400x400
-        frames.append(gif.convert('RGBA').resize((400, 400)))
+        # Resize frames to 200x200 to save space (it will scale up in SVG)
+        frames.append(gif.convert('RGBA').resize((200, 200), Image.Resampling.LANCZOS))
         gif.seek(gif.tell() + 1)
 except EOFError:
     pass
 
 num_frames = len(frames)
-width, height = 400, 400
+width, height = 200, 200
 sheet_width = width * num_frames
 
 # Create a wide canvas for the sprite sheet
@@ -23,13 +23,17 @@ sheet = Image.new('RGBA', (sheet_width, height))
 for i, frame in enumerate(frames):
     sheet.paste(frame, (i * width, 0))
 
+# Quantize the image to 256 colors to massively reduce PNG size
+sheet = sheet.quantize(colors=256, method=2)
+
 # Convert the wide image to a base64 string
 buffered = BytesIO()
 sheet.save(buffered, format="PNG", optimize=True)
 b64_img = base64.b64encode(buffered.getvalue()).decode('utf-8')
 
 # Generate the SVG that uses CSS steps() to animate the sprite sheet
-svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
+# The SVG is set to 400x400 but the viewBox maps to the 200x200 internal canvas
+svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 {width} {height}">
   <style>
     @keyframes play {{
       0% {{ transform: translateX(0); }}
