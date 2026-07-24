@@ -81,18 +81,22 @@ text, tspan {{white-space: pre;}}
 
 <!-- Vietnam Flag with crisp optical 3D waving effect -->
 <g transform="translate(40, 132)">
-    <!-- Sway animation -->
-    <animateTransform attributeName="transform" type="skewY" values="0; 1.5; 0; -1.5; 0" dur="3s" repeatCount="indefinite" />
-    <g clip-path="url(#flag-clip)">
-        <rect width="400" height="266" fill="#da251d" />
-        <g transform="translate(200, 133)">
-            <animateTransform attributeName="transform" type="scale" values="1; 1.05; 1" dur="3s" repeatCount="indefinite" />
-            <polygon points="0,-80 18,-25 76,-25 29,9 47,65 0,31 -47,65 -29,9 -76,-25 -18,-25" fill="#ffff00" />
+    <g>
+        <!-- Sway animation -->
+        <animateTransform attributeName="transform" type="skewY" values="0; 1.5; 0; -1.5; 0" dur="3s" repeatCount="indefinite" />
+        <g clip-path="url(#flag-clip)">
+            <rect width="400" height="266" fill="#da251d" />
+            <g transform="translate(200, 133)">
+                <g>
+                    <animateTransform attributeName="transform" type="scale" values="1; 1.05; 1" dur="3s" repeatCount="indefinite" />
+                    <polygon points="0,-80 18,-25 76,-25 29,9 47,65 0,31 -47,65 -29,9 -76,-25 -18,-25" fill="#ffff00" />
+                </g>
+            </g>
+            <!-- Moving folds overlay -->
+            <rect width="1200" height="266" fill="url(#folds)" x="-800">
+                <animate attributeName="x" values="-800; -400" dur="3s" repeatCount="indefinite" />
+            </rect>
         </g>
-        <!-- Moving folds overlay -->
-        <rect width="1200" height="266" fill="url(#folds)" x="-800">
-            <animate attributeName="x" values="-800; -400" dur="3s" repeatCount="indefinite" />
-        </rect>
     </g>
 </g>
 
