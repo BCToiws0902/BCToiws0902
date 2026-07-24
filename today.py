@@ -50,16 +50,7 @@ THEMES = {
 SVG_TEMPLATE = """<?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="850px" height="530px" font-size="16px">
 <defs>
-    <linearGradient id="folds" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="black" stop-opacity="0.3" />
-        <stop offset="25%" stop-color="white" stop-opacity="0.2" />
-        <stop offset="50%" stop-color="black" stop-opacity="0.3" />
-        <stop offset="75%" stop-color="white" stop-opacity="0.2" />
-        <stop offset="100%" stop-color="black" stop-opacity="0.3" />
-    </linearGradient>
-    <clipPath id="flag-clip">
-        <rect width="400" height="266" rx="10" />
-    </clipPath>
+{typing_clip}
 </defs>
 <style>
 @font-face {{
@@ -80,7 +71,7 @@ text, tspan {{white-space: pre;}}
 <rect width="850px" height="530px" fill="{bg_color}" rx="15"/>
 
 <!-- Stats column -->
-<text fill="{text_color}">
+<text fill="{text_color}" clip-path="url(#typing)">
 {content}
 </text>
 </svg>
@@ -338,15 +329,21 @@ def build_svg(theme_name, stats):
     ]
     
     lines_content = []
+    typing_rects = []
     for i in range(24):
         y_pos = 35 + i * 21
         stats_parts = stats_structure[i] if i < len(stats_structure) else None
+        
+        # Create typing effect mask for each line
+        delay = i * 0.15
+        typing_rects.append(f'        <rect x="0" y="{y_pos - 16}" width="0" height="26"><animate attributeName="width" from="0" to="850" dur="0.8s" begin="{delay}s" fill="freeze" /></rect>')
         
         line_svg = format_svg_line(y_pos, stats_parts)
         if line_svg:
             lines_content.append(line_svg)
         
     content = "\n".join(lines_content)
+    typing_clip = f'<clipPath id="typing">\n' + "\n".join(typing_rects) + '\n    </clipPath>'
     
     return SVG_TEMPLATE.format(
         bg_color=theme["bg_color"],
@@ -357,7 +354,8 @@ def build_svg(theme_name, stats):
         add_color=theme["add_color"],
         del_color=theme["del_color"],
         header_color=theme["header_color"],
-        content=content
+        content=content,
+        typing_clip=typing_clip
     )
 
 def main():
