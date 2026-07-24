@@ -1,12 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="1300px" height="530px" font-size="16px">
 <defs>
-    <filter id="wave" x="-10%" y="-10%" width="120%" height="120%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.001" numOctaves="2" result="ripple">
-            <animate attributeName="baseFrequency" values="0.015 0.001; 0.025 0.001; 0.015 0.001" dur="4s" repeatCount="indefinite" />
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" in2="ripple" scale="10" xChannelSelector="R" yChannelSelector="G" />
-    </filter>
+    <linearGradient id="folds" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="black" stop-opacity="0.3" />
+        <stop offset="25%" stop-color="white" stop-opacity="0.2" />
+        <stop offset="50%" stop-color="black" stop-opacity="0.3" />
+        <stop offset="75%" stop-color="white" stop-opacity="0.2" />
+        <stop offset="100%" stop-color="black" stop-opacity="0.3" />
+    </linearGradient>
+    <clipPath id="flag-clip">
+        <rect width="400" height="266" rx="10" />
+    </clipPath>
 </defs>
 <style>
 @font-face {
@@ -26,11 +30,20 @@ text, tspan {white-space: pre;}
 </style>
 <rect width="1300px" height="530px" fill="#161b22" rx="15"/>
 
-<!-- Vietnam Flag with waving effect -->
-<g transform="translate(40, 132)" filter="url(#wave)">
-    <rect width="400" height="266" fill="#da251d" rx="10" />
-    <g transform="translate(200, 133)">
-        <polygon points="0,-80 18,-25 76,-25 29,9 47,65 0,31 -47,65 -29,9 -76,-25 -18,-25" fill="#ffff00" />
+<!-- Vietnam Flag with crisp optical 3D waving effect -->
+<g transform="translate(40, 132)">
+    <!-- Sway animation -->
+    <animateTransform attributeName="transform" type="skewY" values="0; 1.5; 0; -1.5; 0" dur="3s" repeatCount="indefinite" />
+    <g clip-path="url(#flag-clip)">
+        <rect width="400" height="266" fill="#da251d" />
+        <g transform="translate(200, 133)">
+            <animateTransform attributeName="transform" type="scale" values="1; 1.05; 1" dur="3s" repeatCount="indefinite" />
+            <polygon points="0,-80 18,-25 76,-25 29,9 47,65 0,31 -47,65 -29,9 -76,-25 -18,-25" fill="#ffff00" />
+        </g>
+        <!-- Moving folds overlay -->
+        <rect width="1200" height="266" fill="url(#folds)" x="-800">
+            <animate attributeName="x" values="-800; -400" dur="3s" repeatCount="indefinite" />
+        </rect>
     </g>
 </g>
 
