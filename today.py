@@ -84,17 +84,29 @@ def calculate_uptime(birthday):
         diff.days, 'day' + format_plural(diff.days),
         ' 🎂' if (diff.months == 0 and diff.days == 0) else '')
 
-def generate_ascii_art(image_path, width=42, invert=False):
+def generate_ascii_art(image_path, width=43, invert=False):
     if not os.path.exists(image_path):
         print(f"Warning: {image_path} not found. Using empty spaces for ASCII.")
         return [" " * width] * 24
         
     try:
+        from PIL import Image, ImageEnhance
         img = Image.open(image_path)
-        # Force exactly 24 lines height to align with stats
+        
+        # Xử lý nền trong suốt (nếu có)
+        if img.mode in ('RGBA', 'LA') or (img.mode == 'P' and 'transparency' in img.info):
+            img = img.convert('RGBA')
+            bg = Image.new('RGBA', img.size, (255, 255, 255))
+            bg.paste(img, mask=img.split()[3])
+            img = bg
+            
+        img = img.convert("L")
+        # Tăng độ tương phản để rõ đường nét khuôn mặt
+        img = ImageEnhance.Contrast(img).enhance(1.5)
+        
+        # Bắt buộc chiều cao 24 dòng để khớp với cột thống kê bên phải
         height = 24
         img = img.resize((width, height), Image.Resampling.LANCZOS)
-        img = img.convert("L")
         
         ascii_chars = '@%#*+=-:. '
         if invert:
