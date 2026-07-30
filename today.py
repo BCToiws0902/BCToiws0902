@@ -18,8 +18,8 @@ LANG_REAL = "Vietnamese, Eye language"
 HOBBIES_SOFTWARE = "Scripting, ios jailbreak, mod GUI ubuntu, desktop supermini size"
 HOBBIES_HARDWARE = "DIY Speakers, Custom Mechanical Keyboards"
 EMAIL_CONTACT = "buicongtoi01@gmail.com"
-FACEBOOK_CONTACT = "bct0902"
-TELEGRAM_CONTACT = "bct0902"
+FACEBOOK_CONTACT = "fb.com/bct0902"
+TELEGRAM_CONTACT = "@bct0902"
 
 # SVG Color Themes
 THEMES = {
